@@ -1,0 +1,21 @@
+{
+    "name": "StateMachine.BOF",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7ceb17de57f375a4b97a7f9d4de0cab1",
+        "GUID:5b969569a61bb2d42a049f6d0253dacf",
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:21d1eb854b91ade49bc69a263d12bee2",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:343deaaf83e0cee4ca978e7df0b80d21"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

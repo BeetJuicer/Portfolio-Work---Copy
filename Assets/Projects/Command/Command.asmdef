@@ -1,0 +1,17 @@
+{
+    "name": "Command",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5b969569a61bb2d42a049f6d0253dacf",
+        "GUID:7ceb17de57f375a4b97a7f9d4de0cab1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

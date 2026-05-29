@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2caa54dd19b6e65409d348bd6022c5c1, type: 3}
+  m_Name: SO_FPS_PlayerData
+  m_EditorClassIdentifier: Command::SO_FPS_PlayerData
+  walkSpeed: 5
+  runSpeed: 10
+  crouchSpeed: 2.5
+  acceleration: 10
+  deceleration: 10
+  jumpForce: 5
+  maxJumpCount: 1
+  gravity: -9.81
+  fallMultiplier: 2.5
+  maxFallSpeed: 300
+  airControlSpeed: 3
+  mouseSensitivity: 0.1
+  maxLookAngle: 89
+  minLookAngle: -89
+  shootDistance: 15
+  explosionPrefab: {fileID: 358637981425055526, guid: 04921d4eece78c24bb346bd5489152da, type: 3}

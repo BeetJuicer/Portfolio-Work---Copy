@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77fff402c1ab87943a31aae184c2d86a, type: 3}
+  m_Name: Preset_Flower
+  m_EditorClassIdentifier: Assembly-CSharp::SO_BulletPreset
+  wave: {fileID: 11400000, guid: 6c0005f161b62a948993bbb5ce820ccc, type: 2}
+  pattern: {fileID: 11400000, guid: 51af2a71a19de1f4498f682d48f54171, type: 2}
+  description: Tight spiral wave fires rings of 12 that shoot out and return. Petals
+    bloom and collapse.

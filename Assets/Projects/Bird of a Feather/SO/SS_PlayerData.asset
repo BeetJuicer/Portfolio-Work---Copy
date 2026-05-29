@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14b0eb9bfaf0954ea9a1d0bb790a7c5, type: 3}
+  m_Name: SS_PlayerData
+  m_EditorClassIdentifier: StateMachine::StateMachine.SO_SS_PlayerData
+  data:
+    moveSpeed: 15
+    groundAcceleration: 12
+    airAcceleration: 100
+    groundDeceleration: 40
+    airDeceleration: 1
+    jumpForce: 30
+    jumpCutMultiplier: 0.5
+    coyoteTime: 0.12
+    jumpBufferTime: 0.1
+    jumpGravityScale: 0.7
+    maxFallSpeed: 150
+    fallGravityScale: 1
+    glideStateData:
+      minGoalY: 1
+      maxGoalY: 20
+      minLiftAccel: 1
+      maxLiftAccel: 300
+      goalYMultiplier: 0.15
+      liftAccelMultiplier: 15
+      entrySpeedMultiplier: 0.3
+      maxEntryAdditionalSpeed: 30
+      moveSpeed: 59.47
+      acceleration: 15
+      turnAccelMultiplier: 4
+      gravityScale: 0.15
+    windRideMaxSpeed: 20
+    windRideAcceleration: 5
+    windDetectionSize: {x: 1, y: 1}
+    whatIsWind:
+      serializedVersion: 2
+      m_Bits: 512
+    diveSpeed: 25
+    diveAirControlSpeed: 1

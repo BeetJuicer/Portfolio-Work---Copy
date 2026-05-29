@@ -1,30 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcea80f2918cc994c9da29cf776c8530, type: 3}
-  m_Name: SS_AIData
-  m_EditorClassIdentifier: StateMachine::StateMachine.SO_SS_AIData
-  data:
-    patrolSpeed: 3
-    patrolWaitTime: 1.5
-    patrolDistance: 5
-    detectionRange: 6
-    detectionHeight: 2
-    whatIsPlayer:
-      serializedVersion: 2
-      m_Bits: 0
-    canJump: 1
-    jumpDetectionRange: 1.5
-    whatIsObstacle:
-      serializedVersion: 2
-      m_Bits: 0
-    stopAtEdges: 1
-    edgeCheckDistance: 0.5
+version https://git-lfs.github.com/spec/v1
+oid sha256:eb85b0761f4e3369fdeda430408e1e6d9dca1d75b0599ad80a23b7e5c292e0a7
+size 798

@@ -1,0 +1,16 @@
+﻿<Solution>
+  <Project Path="AStar.csproj" />
+  <Project Path="StateMachine.BOF.csproj" />
+  <Project Path="Boids.csproj" />
+  <Project Path="BulletHell.csproj" />
+  <Project Path="Command.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="Splines.csproj" />
+  <Project Path="StateMachine.Possess.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Kinematics.csproj" />
+  <Project Path="Interfaces.csproj" />
+  <Project Path="StateMachine.Core.csproj" />
+  <Project Path="DungeonGen.csproj" />
+</Solution>

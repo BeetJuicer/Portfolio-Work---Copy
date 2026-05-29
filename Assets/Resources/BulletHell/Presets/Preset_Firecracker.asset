@@ -1,17 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77fff402c1ab87943a31aae184c2d86a, type: 3}
-  m_Name: Preset_Firecracker
-  m_EditorClassIdentifier: Assembly-CSharp::SO_BulletPreset
-  wave: {fileID: 0}
-  pattern: {fileID: 11400000, guid: 8769d5f463343f0499cf0502f7455ec3, type: 2}
-  description: Rapid triple-ring bursts with short pause. Pops like an explosion.
+version https://git-lfs.github.com/spec/v1
+oid sha256:aa2b390e2dbca27df0422ff99da98336a315a82e5d8bc34590940cef3f2a3f76
+size 637

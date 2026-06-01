@@ -1,0 +1,6 @@
+Creating arcade with video previews:
+ - change the text mesh title
+ - change video clip
+ - make separate render texture
+ - make a material referencing that render texture
+ - apply material to quad

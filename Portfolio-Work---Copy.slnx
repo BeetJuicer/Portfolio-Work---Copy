@@ -1,9 +1,9 @@
 ﻿<Solution>
   <Project Path="AStar.csproj" />
+  <Project Path="Command.csproj" />
   <Project Path="StateMachine.BOF.csproj" />
   <Project Path="Boids.csproj" />
   <Project Path="BulletHell.csproj" />
-  <Project Path="Command.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="Splines.csproj" />

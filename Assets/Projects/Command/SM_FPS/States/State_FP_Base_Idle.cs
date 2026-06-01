@@ -7,7 +7,7 @@ namespace CommandPattern.FPS
     using StateMachineCore;
     using UnityEngine;
 
-    class State_FP_Base_Idle : AState_FPS_ControllableState
+    public class State_FP_Base_Idle : AState_FPS_ControllableState
     {
         public State_FP_Base_Idle(SM_FP_Base stateMachine) : base(stateMachine)
         {

@@ -38,18 +38,21 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
     private float minLookAngle;
     private float maxLookAngle;
 
-
+    private bool movementEnabled;
     #region Unity Methods
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
-
-           Cursor.lockState = CursorLockMode.Locked; // Locks cursor to center of screen
-           Cursor.visible = false;                   // Hides the cursor
     }
+
+    public void EnableMovement() => movementEnabled = true;
+    public void DisableMovement() => movementEnabled = false;
 
     private void FixedUpdate()
     {
+        if (!movementEnabled)
+            return;
+
         float currentDeceleration = decelerationAmount * decelerationScale * Time.fixedDeltaTime;
         currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, 0f, currentDeceleration);
         currentVelocity.z = Mathf.MoveTowards(currentVelocity.z, 0f, currentDeceleration);

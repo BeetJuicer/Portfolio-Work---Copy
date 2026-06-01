@@ -2,7 +2,7 @@
 using StateMachineCore;
 using UnityEngine;
 
-abstract class SM_FP_Base : StateMachine
+public abstract class SM_FP_Base : StateMachine
 {
     public State_FP_Base_Idle idleState { get; private set; }
     public State_FP_Base_Move moveState { get; private set; }
@@ -17,7 +17,7 @@ abstract class SM_FP_Base : StateMachine
     public SO_FPS_PlayerData PlayerData => playerData;
     public IFPSController Controller => controller;
     private IFPSController controller;
-
+    public bool LookEnabled { get; private set; } = true;
     protected override void Start()
     {
         controller = CreateController();  // <-- hook for subclasses
@@ -36,6 +36,9 @@ abstract class SM_FP_Base : StateMachine
         ChangeState(idleState);
         base.Start();
     }
+
+    public void EnableLook() => LookEnabled = true;
+    public void DisableLook() => LookEnabled = false;
 
     protected override void Update()
     {

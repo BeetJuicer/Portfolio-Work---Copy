@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CommandPattern
 {
-    abstract class AState_FPS_ControllableState : BaseState<SM_FP_Base>
+    public abstract class AState_FPS_ControllableState : BaseState<SM_FP_Base>
     {
         protected AState_FPS_ControllableState(SM_FP_Base stateMachine) : base(stateMachine) { }
 
@@ -13,6 +13,9 @@ namespace CommandPattern
 
         protected override void StateUpdate()
         {
+            if (!stateMachine.LookEnabled)
+                return;
+
             stateMachine.Movable.SetVerticalLookRange(
                 stateMachine.PlayerData.minLookAngle,
                 stateMachine.PlayerData.maxLookAngle);

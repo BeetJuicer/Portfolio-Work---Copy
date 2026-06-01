@@ -208,10 +208,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   interactKey: 101
-  interactUI: {fileID: 0}
+  interactUI: {fileID: 8322932735519572440}
   onInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DialogueCaller, Assembly-CSharp
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8322932735519572440
 GameObject:
   m_ObjectHideFlags: 0

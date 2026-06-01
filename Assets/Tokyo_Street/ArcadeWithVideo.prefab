@@ -508,6 +508,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3761681640230067246}
     m_Modifications:
+    - target: {fileID: 5714844198588434713, guid: e8be0b5cd83a3aa43aba4c236ba881c3, type: 3}
+      propertyPath: m_Size.z
+      value: 2.5628777
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714844198588434713, guid: e8be0b5cd83a3aa43aba4c236ba881c3, type: 3}
+      propertyPath: m_Center.x
+      value: 0.000023182532
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714844198588434713, guid: e8be0b5cd83a3aa43aba4c236ba881c3, type: 3}
+      propertyPath: m_Center.z
+      value: 0.2406863
+      objectReference: {fileID: 0}
     - target: {fileID: 8810692661202481001, guid: e8be0b5cd83a3aa43aba4c236ba881c3, type: 3}
       propertyPath: m_Name
       value: ArcadeWithCollider
@@ -625,6 +637,18 @@ PrefabInstance:
     - target: {fileID: 4844748107233583787, guid: ac2dd428f7c09d844a14c70821d9e3db, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.782
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008547148709396537, guid: ac2dd428f7c09d844a14c70821d9e3db, type: 3}
+      propertyPath: m_Size.z
+      value: 1.7551625
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008547148709396537, guid: ac2dd428f7c09d844a14c70821d9e3db, type: 3}
+      propertyPath: m_Center.x
+      value: 2.634909e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008547148709396537, guid: ac2dd428f7c09d844a14c70821d9e3db, type: 3}
+      propertyPath: m_Center.z
+      value: 0.0057604015
       objectReference: {fileID: 0}
     - target: {fileID: 6248478658075578481, guid: ac2dd428f7c09d844a14c70821d9e3db, type: 3}
       propertyPath: m_LocalPosition.x

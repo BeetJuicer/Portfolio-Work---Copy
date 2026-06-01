@@ -5,6 +5,7 @@
   <Project Path="Boids.csproj" />
   <Project Path="BulletHell.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="MathsFreya.csproj" />
   <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="Splines.csproj" />
   <Project Path="StateMachine.Possess.csproj" />

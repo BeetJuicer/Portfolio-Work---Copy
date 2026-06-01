@@ -8,9 +8,9 @@ namespace CommandPattern.FPS
     using StateMachineCore;
     using UnityEngine;
 
-    class State_FP_Move : AState_FPS_ControllableState
+    class State_FP_Shooter_Jump : AState_FPS_ShooterState
     {
-        public State_FP_Move(SM_FP_SpellSlinger stateMachine) : base(stateMachine)
+        public State_FP_Shooter_Jump(SM_FP_Spellslinger stateMachine) : base(stateMachine)
         {
         }
 
@@ -18,23 +18,18 @@ namespace CommandPattern.FPS
         {
             base.Enter(previousState);
             stateMachine.Movable.SetDeceleration(stateMachine.PlayerData.deceleration);
+            stateMachine.Jumpable.Jump(stateMachine.PlayerData.jumpForce);
         }
 
         protected override void StateUpdate()
         {
             base.StateUpdate();
 
-            if (stateMachine.Controller.JumpInput)
-            {
-                stateMachine.ChangeState(stateMachine.jumpState);
-                return;
-            }
-            else if (stateMachine.Controller.MoveInput == Vector2.zero)
+            if (stateMachine.Jumpable.IsGrounded())
             {
                 stateMachine.ChangeState(stateMachine.idleState);
                 return;
             }
-
         }
 
         protected override void StateFixedUpdate()
@@ -42,8 +37,8 @@ namespace CommandPattern.FPS
             base.StateFixedUpdate();
 
             Vector2 moveDir = stateMachine.Controller.MoveInput;
-            stateMachine.Movable.SetVelocityX(moveDir.x * stateMachine.PlayerData.walkSpeed);
-            stateMachine.Movable.SetVelocityZ(moveDir.y * stateMachine.PlayerData.walkSpeed);
+            stateMachine.Movable.SetVelocityX(moveDir.x * stateMachine.PlayerData.airControlSpeed);
+            stateMachine.Movable.SetVelocityZ(moveDir.y * stateMachine.PlayerData.airControlSpeed);
         }
 
         protected override void Exit()

@@ -8,9 +8,9 @@ namespace CommandPattern.FPS
     using StateMachineCore;
     using UnityEngine;
 
-    class State_FP_Jump : AState_FPS_ControllableState
+    class State_FP_Base_Jump : AState_FPS_ControllableState
     {
-        public State_FP_Jump(SM_FP_SpellSlinger stateMachine) : base(stateMachine)
+        public State_FP_Base_Jump(SM_FP_Base stateMachine) : base(stateMachine)
         {
         }
 

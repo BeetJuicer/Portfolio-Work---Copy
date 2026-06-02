@@ -16,7 +16,7 @@ namespace StateMachineCore
 
         private void Start()
         {
-            Possess(defaultChar);
+            //Possess(defaultChar);
         }
 
         public void Possess(TopDownCharacterStateMachine actor)

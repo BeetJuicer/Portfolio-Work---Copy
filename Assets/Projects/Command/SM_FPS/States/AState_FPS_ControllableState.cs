@@ -22,6 +22,7 @@ namespace CommandPattern
 
             stateMachine.Movable.LookAt(
                 stateMachine.Controller.LookDelta * stateMachine.PlayerData.mouseSensitivity);
+
         }
 
         protected override void StateFixedUpdate() { }

@@ -1,10 +1,9 @@
-using CommandPattern.FPS;
 using StateMachineCore;
 using UnityEngine;
 
-namespace CommandPattern
+namespace CommandPattern.FPS
 {
-    abstract class AState_FPS_ShooterState : BaseState<SM_FP_Spellslinger>
+    public abstract class AState_FPS_ShooterState : BaseState<SM_FP_Spellslinger>
     {
         bool hasFired;
 
@@ -14,8 +13,6 @@ namespace CommandPattern
         {
             stateMachine.Shooter.SetMaxRayDistance(stateMachine.PlayerData.shootDistance);
         }
-
-        protected override void Exit() { }
 
         protected override void StateUpdate()
         {
@@ -35,9 +32,7 @@ namespace CommandPattern
             }
 
             if (!stateMachine.Controller.ShootInput)
-            {
                 hasFired = false;
-            }
 
             if (stateMachine.Controller.SkillInput)
             {
@@ -51,7 +46,5 @@ namespace CommandPattern
                 stateMachine.Animator.SetBool("isHolding", false);
             }
         }
-
-        protected override void StateFixedUpdate() { }
     }
 }

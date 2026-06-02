@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CommandPattern.FPS
+﻿namespace CommandPattern.FPS
 {
     using StateMachineCore;
     using UnityEngine;
 
-    class State_FP_Shooter_Idle : AState_FPS_ShooterState
+    public class State_FP_Shooter_Idle : AState_FPS_ShooterState
     {
-        public State_FP_Shooter_Idle(SM_FP_Spellslinger stateMachine) : base(stateMachine)
-        {
-        }
+        public State_FP_Shooter_Idle(SM_FP_Spellslinger stateMachine) : base(stateMachine) { }
 
         protected override void Enter(State previousState)
         {
@@ -33,17 +27,6 @@ namespace CommandPattern.FPS
                 stateMachine.ChangeState(stateMachine.moveState);
                 return;
             }
-
-        }
-
-        protected override void StateFixedUpdate()
-        {
-            base.StateFixedUpdate();
-        }
-
-        protected override void Exit()
-        {
-            base.Exit();
         }
     }
 }

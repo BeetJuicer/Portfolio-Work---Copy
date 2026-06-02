@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace CommandPattern
 {
@@ -10,17 +8,14 @@ namespace CommandPattern
     {
         private static TimeManager instance;
         public static TimeManager Instance => instance;
-
+        private static float reversalMultiplier = 1f; // 2f = twice as fast, 0.5f = slow motion
 
         private static float reversalSpeed = 12f;
-        private static int recordFrameInterval = 60;
-        private int currentFrame = 0;
+        private static float recordInterval = 1f; // seconds between snapshots
+        private float timeSinceLastRecord = 0f;
+        private float currentTime = 0f;
 
-        private int CurrentFrame => currentFrame;
-
-        private SortedList<int, List<MoveCommand>> snapShots = new();
-
-        // Stores both position and rotation per reversible
+        private SortedList<float, List<MoveCommand>> snapShots = new();
         private Dictionary<TimeReversible, (Vector3 pos, Quaternion rot)> StateXFramesAgo = new();
 
         private bool isReversing = false;
@@ -28,7 +23,7 @@ namespace CommandPattern
 
         private void Awake()
         {
-            if(instance == null)
+            if (instance == null)
                 instance = this;
             else
                 Destroy(gameObject);
@@ -38,9 +33,7 @@ namespace CommandPattern
         {
             var reversibles = FindObjectsByType<TimeReversible>(FindObjectsSortMode.None).ToList();
             foreach (var reversible in reversibles)
-            {
                 StateXFramesAgo.Add(reversible, (reversible.transform.position, reversible.transform.rotation));
-            }
         }
 
         void Update()
@@ -63,105 +56,103 @@ namespace CommandPattern
 
         public void StartReversing()
         {
-            if (isReversing)
-                return;
+            if (isReversing) return;
 
             if (snapShots.Count == 0)
             {
-                currentFrame = 0;
+                currentTime = 0f;
                 return;
             }
 
             foreach (TimeReversible reversible in StateXFramesAgo.Keys)
                 reversible.Reverse();
 
-            currentFrame = snapShots.Keys.Last();
+            currentTime = snapShots.Keys.Last();
             isReversing = true;
         }
 
         public void StopReversing()
         {
-            if (!isReversing)
-                return;
+            if (!isReversing) return;
 
-            if (snapShots.ContainsKey(currentFrame))
+            if (snapShots.ContainsKey(currentTime))
             {
-                foreach (var command in snapShots[currentFrame])
+                foreach (var command in snapShots[currentTime])
                 {
                     if (command.currentT != 0)
                         command.Undo();
                 }
-                currentFrame -= recordFrameInterval;
+                // step back one snapshot
+                int idx = snapShots.IndexOfKey(currentTime) - 1;
+                currentTime = idx >= 0 ? snapShots.Keys[idx] : 0f;
             }
 
-            List<TimeReversible> copy = StateXFramesAgo.Keys.ToList();
-            foreach (var reversible in StateXFramesAgo.Keys)
+            var copy = StateXFramesAgo.Keys.ToList();
+            foreach (var reversible in copy)
                 reversible.StopReversing();
 
             foreach (var reversible in copy)
-            {
                 StateXFramesAgo[reversible] = (reversible.transform.position, reversible.transform.rotation);
-            }
 
-            ClearAllSnapshotsAfterFrame(currentFrame);
+            ClearAllSnapshotsAfterTime(currentTime);
             isReversing = false;
         }
 
-        private void ClearAllSnapshotsAfterFrame(int frame)
+        private void ClearAllSnapshotsAfterTime(float time)
         {
-            var keysToRemove = snapShots.Keys.Where(k => k > frame).ToList();
+            var keysToRemove = snapShots.Keys.Where(k => k > time).ToList();
             foreach (var key in keysToRemove)
                 snapShots.Remove(key);
         }
 
         private void HandleRecording()
         {
-            currentFrame++;
+            timeSinceLastRecord += Time.deltaTime;
+            currentTime += Time.deltaTime;
 
-            if (currentFrame % recordFrameInterval == 0)
+            if (timeSinceLastRecord < recordInterval)
+                return;
+
+            timeSinceLastRecord = 0f;
+
+            List<(TimeReversible key, Vector3 newPos, Vector3 oldPos, Quaternion newRot, Quaternion oldRot)> changes = new();
+
+            foreach (var kvp in StateXFramesAgo)
             {
-                List<(TimeReversible key, Vector3 newPos, Vector3 oldPos, Quaternion newRot, Quaternion oldRot)> changes = new();
+                Vector3 oldPos = kvp.Value.pos;
+                Vector3 newPos = kvp.Key.transform.position;
+                Quaternion oldRot = kvp.Value.rot;
+                Quaternion newRot = kvp.Key.transform.rotation;
 
-                foreach (KeyValuePair<TimeReversible, (Vector3 pos, Quaternion rot)> reversible in StateXFramesAgo)
-                {
-                    Vector3 oldPos = reversible.Value.pos;
-                    Vector3 newPos = reversible.Key.transform.position;
-                    Quaternion oldRot = reversible.Value.rot;
-                    Quaternion newRot = reversible.Key.transform.rotation;
+                if (newPos != oldPos || newRot != oldRot)
+                    changes.Add((kvp.Key, newPos, oldPos, newRot, oldRot));
+            }
 
-                    bool posChanged = newPos != oldPos;
-                    bool rotChanged = newRot != oldRot;
-
-                    if (posChanged || rotChanged)
-                        changes.Add((reversible.Key, newPos, oldPos, newRot, oldRot));
-                }
-
-                foreach (var (key, newPos, oldPos, newRot, oldRot) in changes)
-                {
-                    StateXFramesAgo[key] = (newPos, newRot);
-                    MoveCommand move = new MoveCommand(oldPos, newPos, oldRot, newRot, key.gameObject);
-                    if (!snapShots.ContainsKey(currentFrame))
-                        snapShots[currentFrame] = new List<MoveCommand>();
-                    snapShots[currentFrame].Add(move);
-                }
+            foreach (var (key, newPos, oldPos, newRot, oldRot) in changes)
+            {
+                StateXFramesAgo[key] = (newPos, newRot);
+                MoveCommand move = new MoveCommand(oldPos, newPos, oldRot, newRot, key.gameObject);
+                if (!snapShots.ContainsKey(currentTime))
+                    snapShots[currentTime] = new List<MoveCommand>();
+                snapShots[currentTime].Add(move);
             }
         }
 
         private void HandleReversing()
         {
-            if (currentFrame <= 0)
+            if (currentTime <= 0f)
             {
                 StopReversing();
                 return;
             }
 
-            if (!snapShots.ContainsKey(currentFrame))
+            if (!snapShots.ContainsKey(currentTime))
                 return;
 
             bool allDone = true;
-            float t = reversalSpeed * Time.deltaTime;
+            float t = (reversalMultiplier / recordInterval) * Time.deltaTime;
 
-            foreach (var command in snapShots[currentFrame])
+            foreach (var command in snapShots[currentTime])
             {
                 if (command.currentT != 0)
                 {
@@ -172,8 +163,8 @@ namespace CommandPattern
 
             if (allDone)
             {
-                int previousSnapShotIndex = snapShots.IndexOfKey(currentFrame) - 1;
-                currentFrame = previousSnapShotIndex >= 0 ? snapShots.Keys[previousSnapShotIndex] : 0;
+                int previousIdx = snapShots.IndexOfKey(currentTime) - 1;
+                currentTime = previousIdx >= 0 ? snapShots.Keys[previousIdx] : 0f;
             }
         }
 

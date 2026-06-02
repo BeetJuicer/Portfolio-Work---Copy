@@ -1,12 +1,12 @@
 ﻿<Solution>
   <Project Path="AStar.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Ink-Libraries.csproj" />
   <Project Path="Command.csproj" />
   <Project Path="StateMachine.BOF.csproj" />
   <Project Path="Boids.csproj" />
   <Project Path="BulletHell.csproj" />
   <Project Path="InkEditor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="MathsFreya.csproj" />
   <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="Splines.csproj" />

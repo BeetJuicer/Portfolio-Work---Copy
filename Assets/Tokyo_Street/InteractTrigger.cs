@@ -26,6 +26,7 @@ public class InteractTrigger : MonoBehaviour, IInteractable
         if (targetInTrigger && Input.GetKeyDown(interactKey))
         {
             onInteract?.Invoke();
+            interactUI.SetActive(false);
             OnInteract();
         }
     }

@@ -38,7 +38,7 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
     private float minLookAngle;
     private float maxLookAngle;
 
-    private bool movementEnabled;
+    private bool movementEnabled = true;
     #region Unity Methods
     private void Start()
     {
@@ -50,6 +50,7 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
 
     private void FixedUpdate()
     {
+        print("movement: " + movementEnabled);
         if (!movementEnabled)
             return;
 

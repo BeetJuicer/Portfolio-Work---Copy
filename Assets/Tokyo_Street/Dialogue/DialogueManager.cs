@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using Ink.Runtime;
+using System.Diagnostics.Tracing;
 using Ink;
+using Ink.Runtime;
+using StateMachineCore;
+using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
@@ -38,8 +41,11 @@ public class DialogueManager : MonoBehaviour
     private const string PORTRAIT_TAG = "portrait";
     private const string LAYOUT_TAG = "layout";
     private const string SCENE_TAG = "scene";
+    private const string EVENT_TAG = "event";
+    private const string ONDIALOGUEFINISHED_TAG = "onDialogueFinished";
 
     private DialogueVariables dialogueVariables;
+    private event Action OnDialogueFinished;
 
     private void Awake()
     {
@@ -113,6 +119,9 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+
+        OnDialogueFinished?.Invoke();
+        OnDialogueFinished = null; //clear.
     }
 
     private void ContinueStory()
@@ -192,35 +201,45 @@ public class DialogueManager : MonoBehaviour
 
     protected virtual void HandleTags(List<string> currentTags)
     {
-        // loop through each tag and handle it accordingly
         foreach (string tag in currentTags)
         {
-            // parse the tag
             string[] splitTag = tag.Split(':');
-            if (splitTag.Length != 2)
+
+            // Allow 2 or 3 parts (key:value or key:event:variable)
+            if (splitTag.Length < 2 || splitTag.Length > 3)
             {
                 Debug.LogError("Tag could not be appropriately parsed: " + tag);
+                continue;
             }
+
             string tagKey = splitTag[0].Trim();
             string tagValue = splitTag[1].Trim();
+            string tagExtra = splitTag.Length == 3 ? splitTag[2].Trim() : null;
 
-            // handle the tag
             switch (tagKey)
             {
+                case ONDIALOGUEFINISHED_TAG:
+                    AddPendingEventAfterDialogue(tagValue, tagExtra);
+                    break;
+
                 case SPEAKER_TAG:
                     displayNameText.text = tagValue;
                     break;
-                //case PORTRAIT_TAG:
-                    //portraitAnimator.Play(tagValue);
-                    //break;
-                //case LAYOUT_TAG:
-                    //layoutAnimator.Play(tagValue);
-                    //break;
+
+                case EVENT_TAG:
+                    DialogueGameEvents.Instance.Trigger(tagValue, tagExtra);
+                    break;
+
                 default:
                     Debug.LogWarning("Tag came in but is not currently being handled: " + tag);
                     break;
             }
         }
+    }
+
+    private void AddPendingEventAfterDialogue(string value, string extra)
+    {
+        OnDialogueFinished += () => DialogueGameEvents.Instance.Trigger(value, extra);
     }
 
     private void DisplayChoices()

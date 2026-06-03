@@ -128,6 +128,15 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
+            string nextLine = currentStory.Continue();
+
+            // If the next line is completely empty or just whitespace, skip typing.
+            if (string.IsNullOrWhiteSpace(nextLine) && !currentStory.canContinue)
+            {
+                StartCoroutine(ExitDialogueMode());
+                return;
+            }
+
             // set text for the current dialogue line
             if (displayLineCoroutine != null)
             {

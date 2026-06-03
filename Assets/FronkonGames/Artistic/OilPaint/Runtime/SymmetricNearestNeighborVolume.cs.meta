@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: c981fe4b965127d4a87cf20ef80becfb
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264134
+  packageName: 'Artistic: Oil Paint'
+  packageVersion: 3.0.2
+  assetPath: Assets/FronkonGames/Artistic/OilPaint/Runtime/SymmetricNearestNeighborVolume.cs
+  uploadId: 880722

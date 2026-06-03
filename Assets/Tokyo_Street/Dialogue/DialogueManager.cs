@@ -128,22 +128,30 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
+            // 1. Grab the line normally (only call Continue ONCE)
             string nextLine = currentStory.Continue();
 
-            // If the next line is completely empty or just whitespace, skip typing.
-            if (string.IsNullOrWhiteSpace(nextLine) && !currentStory.canContinue)
+            // 2. Trim the line to see if Ink gave us a ghost line or an empty layout swap
+            if (string.IsNullOrWhiteSpace(nextLine.Trim()))
             {
-                StartCoroutine(ExitDialogueMode());
+                // If it's empty text and Ink has nothing left, close down immediately
+                if (!currentStory.canContinue)
+                {
+                    StartCoroutine(ExitDialogueMode());
+                    return;
+                }
+
+                // If it's an empty line but there are still choices/lines ahead, move past it automatically
+                ContinueStory();
                 return;
             }
 
-            // set text for the current dialogue line
+            // 3. Run your typewriter normally on the validated line
             if (displayLineCoroutine != null)
             {
                 StopCoroutine(displayLineCoroutine);
             }
-            displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
-            // handle tags
+            displayLineCoroutine = StartCoroutine(DisplayLine(nextLine));
             HandleTags(currentStory.currentTags);
         }
         else

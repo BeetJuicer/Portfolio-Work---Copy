@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 3f0d2ca906bb53f42a9b870102fa04dc
+guid: 86bfb518469904841b876134392918e1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5967482015449091226
-    second: Plants_Normal_0
+      213: -6834524911116659543
+    second: chest_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
-    sRGBTexture: 0
+    enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -55,9 +55,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 1
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Plants_Normal_0
+      name: chest_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2048
-        height: 2048
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 663ff9959be3f2da0800000000000000
-      internalID: -5967482015449091226
+      spriteID: 9a45550edc3e621a0800000000000000
+      internalID: -6834524911116659543
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Plants_Normal_0: -5967482015449091226
+      chest_0: -6834524911116659543
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

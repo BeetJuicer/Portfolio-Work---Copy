@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 3f0d2ca906bb53f42a9b870102fa04dc
+guid: 16a1a415ac327e844aa9dff9195beba0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5967482015449091226
-    second: Plants_Normal_0
+      213: 1742938187857531237
+    second: T_Pickaxe_N_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
-    sRGBTexture: 0
+    enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -55,9 +55,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 1
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Plants_Normal_0
+      name: T_Pickaxe_N_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 663ff9959be3f2da0800000000000000
-      internalID: -5967482015449091226
+      spriteID: 56116b02c09203810800000000000000
+      internalID: 1742938187857531237
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Plants_Normal_0: -5967482015449091226
+      T_Pickaxe_N_0: 1742938187857531237
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

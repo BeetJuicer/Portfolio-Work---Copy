@@ -1,5 +1,6 @@
 ﻿<Solution>
   <Project Path="FronkonGames.Artistic.OneBit.Editor.csproj" />
+  <Project Path="FronkonGames.Artistic.TiltShift.Editor.csproj" />
   <Project Path="AStar.csproj" />
   <Project Path="FronkonGames.Artistic.OilPaint.csproj" />
   <Project Path="FronkonGames.Artistic.Neon.csproj" />
@@ -18,6 +19,7 @@
   <Project Path="FronkonGames.Artistic.Neon.Editor.csproj" />
   <Project Path="StateMachine.Possess.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="FronkonGames.Artistic.TiltShift.csproj" />
   <Project Path="FronkonGames.Artistic.Comic.Editor.csproj" />
   <Project Path="FronkonGames.Artistic.Comic.csproj" />
   <Project Path="Kinematics.csproj" />

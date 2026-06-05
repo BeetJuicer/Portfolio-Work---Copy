@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InteractTrigger : MonoBehaviour, IInteractable
+public class InteractTrigger : MonoBehaviour
 {
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private KeyCode interactKey = KeyCode.E;
@@ -20,18 +20,14 @@ public class InteractTrigger : MonoBehaviour, IInteractable
     {
         interactUI.SetActive(false);
     }
-
     private void Update()
     {
         if (targetInTrigger && Input.GetKeyDown(interactKey))
         {
             onInteract?.Invoke();
             interactUI.SetActive(false);
-            OnInteract();
         }
     }
-
-    public virtual void OnInteract() { }
 
     private void OnTriggerEnter(Collider other)
     {

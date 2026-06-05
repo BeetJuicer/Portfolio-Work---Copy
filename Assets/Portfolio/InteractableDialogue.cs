@@ -4,8 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(DialogueCaller))]
 public class InteractableDialogue : MonoBehaviour, IInteractable
 {
-    [SerializeField] private LayerMask defaultLayer;
-    [SerializeField] private LayerMask highlightLayer;
+    [SerializeField] private string defaultLayer = "Default";
+    [SerializeField] private string highlightLayer = "Interactable-On";
     private DialogueCaller dialogue;
     public string InteractLabel = "Hello";
     
@@ -19,6 +19,6 @@ public class InteractableDialogue : MonoBehaviour, IInteractable
         dialogue.StartDialogue();
     }
 
-    public void OnHighlight() => gameObject.layer = highlightLayer;
-    public void OffHighlight() => gameObject.layer = defaultLayer;
+    public void OnHighlight() => gameObject.layer = LayerMask.NameToLayer(highlightLayer);
+    public void OffHighlight() => gameObject.layer = LayerMask.NameToLayer(defaultLayer);
 }

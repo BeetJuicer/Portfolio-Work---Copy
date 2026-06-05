@@ -3,52 +3,50 @@ using UnityEngine;
 public class InteractScanner : MonoBehaviour
 {
     [Header("Boxcast Settings")]
-    [SerializeField] private Vector2 boxSize = new Vector2(2f, 2f);
+    [SerializeField] private Vector3 boxSize = new Vector3(2f, 2f, 1f);
     [SerializeField] private float distance = 5f;
     [SerializeField] private LayerMask interactableLayers;
 
-    /// <summary>
-    /// Finds the interactable closest to the center line of the boxcast.
-    /// Returns null if none found.
-    /// </summary>
+    private IInteractable current;
+
     public IInteractable GetBestInteractable()
     {
-        Vector2 origin = transform.position;
-        Vector2 direction = transform.right;
+        Vector3 origin = transform.position;
+        Vector3 direction = transform.forward;
 
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(
+        RaycastHit[] hits = Physics.BoxCastAll(
             origin,
-            boxSize,
-            0f,
+            boxSize * 0.5f,         // Physics3D takes half-extents, not full size
             direction,
+            transform.rotation,
             distance,
             interactableLayers
         );
 
         if (hits.Length == 0)
+        {
+            current?.OffHighlight();
+            current = null;
             return null;
+        }
 
         IInteractable bestInteractable = null;
         float bestScore = float.MaxValue;
+        Vector3 boxCenterLineEnd = origin + direction * distance;
 
-        Vector2 boxCenterLineEnd = origin + direction * distance;
-
-        foreach (RaycastHit2D hit in hits)
+        foreach (RaycastHit hit in hits)
         {
+            print("HIT: " + hit.collider.name);
+
             if (hit.collider == null)
                 continue;
 
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-
             if (interactable == null)
                 continue;
 
-            // Distance from hit point to center line
-            float score = DistanceToLine(
-                origin,
-                boxCenterLineEnd,
-                hit.point
-            );
+            Vector3 objectCenter = hit.collider.bounds.center;
+            float score = DistanceToLine(origin, boxCenterLineEnd, objectCenter);
 
             if (score < bestScore)
             {
@@ -57,41 +55,74 @@ public class InteractScanner : MonoBehaviour
             }
         }
 
+        if(bestInteractable != current)
+        {
+            current?.OffHighlight();
+        }
+
         return bestInteractable;
     }
 
-    /// <summary>
-    /// Distance from point to line segment.
-    /// </summary>
-    private float DistanceToLine(Vector2 a, Vector2 b, Vector2 point)
+    private void Update()
     {
-        Vector2 ab = b - a;
-        float t = Vector2.Dot(point - a, ab) / ab.sqrMagnitude;
+        IInteractable interactable = GetBestInteractable();
+        if(interactable != null)
+        {
+            interactable.OnHighlight();
+            current = interactable;
+        }
+
+        if(current != null && Input.GetKeyDown(KeyCode.E))
+        {
+            current.OnInteract();
+            current.OffHighlight();
+        }
+    }
+
+    private float DistanceToLine(Vector3 a, Vector3 b, Vector3 point)
+    {
+        Vector3 ab = b - a;
+        float t = Vector3.Dot(point - a, ab) / ab.sqrMagnitude;
         t = Mathf.Clamp01(t);
-
-        Vector2 closestPoint = a + ab * t;
-
-        return Vector2.Distance(point, closestPoint);
+        Vector3 closestPoint = a + ab * t;
+        return Vector3.Distance(point, closestPoint);
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-
         Vector3 origin = transform.position;
-        Vector3 direction = transform.right;
+        Vector3 direction = transform.forward;
+        Vector3 endCenter = origin + direction * distance;
 
-        Vector3 center = origin + direction * (distance * 0.5f);
+        float halfW = boxSize.x * 0.5f;
+        float halfH = boxSize.y * 0.5f;
 
-        Gizmos.matrix = Matrix4x4.TRS(
-            center,
-            transform.rotation,
-            Vector3.one
-        );
+        Vector3 up = transform.up;
+        Vector3 right = transform.right;
 
-        Gizmos.DrawWireCube(
-            Vector3.zero,
-            new Vector3(boxSize.x, boxSize.y, 0f)
-        );
+        Vector3 tl = -right * halfW + up * halfH;
+        Vector3 tr = right * halfW + up * halfH;
+        Vector3 bl = -right * halfW - up * halfH;
+        Vector3 br = right * halfW - up * halfH;
+
+        Gizmos.color = Color.green;
+        DrawBox(origin, tl, tr, bl, br);
+
+        Gizmos.color = Color.yellow;
+        DrawBox(endCenter, tl, tr, bl, br);
+
+        Gizmos.color = new Color(0f, 1f, 0f, 0.4f);
+        Gizmos.DrawLine(origin + tl, endCenter + tl);
+        Gizmos.DrawLine(origin + tr, endCenter + tr);
+        Gizmos.DrawLine(origin + bl, endCenter + bl);
+        Gizmos.DrawLine(origin + br, endCenter + br);
+    }
+
+    private void DrawBox(Vector3 center, Vector3 tl, Vector3 tr, Vector3 bl, Vector3 br)
+    {
+        Gizmos.DrawLine(center + tl, center + tr);
+        Gizmos.DrawLine(center + bl, center + br);
+        Gizmos.DrawLine(center + tl, center + bl);
+        Gizmos.DrawLine(center + tr, center + br);
     }
 }

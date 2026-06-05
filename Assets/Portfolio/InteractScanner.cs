@@ -7,6 +7,9 @@ public class InteractScanner : MonoBehaviour
     [SerializeField] private float distance = 5f;
     [SerializeField] private LayerMask interactableLayers;
 
+    //temporary
+    [SerializeField] private GameObject interactUI;
+
     private IInteractable current;
 
     public IInteractable GetBestInteractable()
@@ -77,6 +80,8 @@ public class InteractScanner : MonoBehaviour
             current.OnInteract();
             current.OffHighlight();
         }
+
+        interactUI.SetActive(current != null);
     }
 
     private float DistanceToLine(Vector3 a, Vector3 b, Vector3 point)

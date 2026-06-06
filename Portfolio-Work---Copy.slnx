@@ -4,7 +4,6 @@
   <Project Path="AStar.csproj" />
   <Project Path="LineworkLite.csproj" />
   <Project Path="FronkonGames.Artistic.OilPaint.csproj" />
-  <Project Path="MathsFreya.csproj" />
   <Project Path="FronkonGames.Artistic.Neon.csproj" />
   <Project Path="Ink-Libraries.csproj" />
   <Project Path="Command.csproj" />

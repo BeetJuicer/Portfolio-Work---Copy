@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -23,7 +22,7 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
 
     #region IMovable Properties
     private Vector3 lastMoveDirection;
-    private Vector3 moveDirection;
+    private Vector3 moveDirection; // NOTE: Ensure an external input script sets this via your interface methods if needed, or process it internally.
 
     public Vector3 FacingDirection3D { get; private set; } = Vector3.forward;
     public Vector3 MoveDirection => moveDirection;
@@ -31,14 +30,19 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
     public Vector3 Velocity => currentVelocity;
     public float GravityScale => gravityScale;
     public bool IsMoving => currentVelocity.sqrMagnitude > 0.0001f;
-
     #endregion
 
     private float pitch = 0f;
     private float minLookAngle;
     private float maxLookAngle;
 
+    [Header("Platform Tracking")]
+    [SerializeField] private LayerMask platformLayer;
+    private MovingPlatform3D activePlatform;
+    private Vector3 activePlatformVelocity;
+
     private bool movementEnabled = true;
+
     #region Unity Methods
     private void Start()
     {
@@ -50,9 +54,7 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
 
     private void FixedUpdate()
     {
-        print("movement: " + movementEnabled);
-
-
+        // 1. Apply Deceleration & Gravity forces to raw velocity
         float currentDeceleration = decelerationAmount * decelerationScale * Time.fixedDeltaTime;
         currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, 0f, currentDeceleration);
         currentVelocity.z = Mathf.MoveTowards(currentVelocity.z, 0f, currentDeceleration);
@@ -63,19 +65,63 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
             currentVelocity.y = Mathf.MoveTowards(currentVelocity.y, -maxFallSpeed, currentGravity);
         }
 
-        //allow gravity to happen even if disabled movement.
-        if (!movementEnabled)
+        // 2. Track platform state
+        CheckForPlatform();
+
+        // 3. Construct Final Movement Vector
+        Vector3 finalMoveDelta = Vector3.zero;
+
+        if (movementEnabled)
         {
-            Vector3 fall = (currentVelocity.y * transform.up) * Time.fixedDeltaTime;
-            characterController.Move(fall);
-            return;
+            // Transform local velocities relative to character orientation
+            finalMoveDelta += (currentVelocity.x * transform.right +
+                               currentVelocity.z * transform.forward +
+                               currentVelocity.y * transform.up) * Time.fixedDeltaTime;
+        }
+        else
+        {
+            // If movement is disabled, still inherit vertical gravity tracking
+            finalMoveDelta += (currentVelocity.y * transform.up) * Time.fixedDeltaTime;
         }
 
-        Vector3 move = (currentVelocity.x * transform.right +
-                        currentVelocity.z * transform.forward +
-                        currentVelocity.y * transform.up) * Time.fixedDeltaTime;
+        // 4. Inject Platform Delta (Ensures player stays attached even if movement is disabled)
+        if (activePlatform != null)
+        {
+            finalMoveDelta += activePlatformVelocity * Time.fixedDeltaTime;
+        }
 
-        characterController.Move(move);
+        // 5. Single, definitive physics calculation per frame
+        characterController.Move(finalMoveDelta);
+    }
+
+    private void CheckForPlatform()
+    {
+        RaycastHit hit;
+        // Shift origin slightly up from base pivot to handle clipping variations safely
+        Vector3 origin = transform.position + (Vector3.up * 0.1f);
+
+        if (Physics.Raycast(origin, Vector3.down, out hit, 0.3f, platformLayer))
+        {
+            MovingPlatform3D platform = hit.collider.GetComponent<MovingPlatform3D>();
+            if (platform != null)
+            {
+                activePlatform = platform;
+                activePlatformVelocity = platform.PlatformVelocity;
+                return;
+            }
+        }
+
+        // If we left the platform, hand off momentum to our internal horizontal velocities
+        if (activePlatform != null)
+        {
+            // Convert global platform velocity to local direction vectors so deceleration slides it out cleanly
+            Vector3 localPlatformVel = transform.InverseTransformDirection(activePlatformVelocity);
+            currentVelocity.x += localPlatformVel.x;
+            currentVelocity.z += localPlatformVel.z;
+
+            activePlatform = null;
+            activePlatformVelocity = Vector3.zero;
+        }
     }
     #endregion
 
@@ -95,10 +141,8 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
 
     public void LookAt(Vector2 delta)
     {
-        //horizontal -- whole body
         transform.Rotate(Vector3.up * delta.x);
 
-        //vertical only camera
         pitch -= delta.y;
         pitch = Mathf.Clamp(pitch, minLookAngle, maxLookAngle);
         fpsCamera.transform.localRotation = Quaternion.Euler(pitch, 0, 0);
@@ -107,13 +151,12 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
 
     #region IJumpable
     public bool IsGrounded() => characterController.isGrounded;
-    public void Jump(float force) {if (movementEnabled) currentVelocity.y += force; }
+    public void Jump(float force) { if (movementEnabled && IsGrounded()) currentVelocity.y += force; }
 
     public void SetVerticalLookRange(float min, float max)
     {
         minLookAngle = min;
         maxLookAngle = max;
     }
-
     #endregion
 }

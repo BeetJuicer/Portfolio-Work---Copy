@@ -1,8 +1,3 @@
-using System.Collections.Generic;
-using System.Security;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class SurfaceArea : MonoBehaviour

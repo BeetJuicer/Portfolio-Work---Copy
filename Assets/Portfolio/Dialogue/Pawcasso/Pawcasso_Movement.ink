@@ -11,5 +11,6 @@ I initially designed a high-mobility kit, including a red grappling hook, blue c
 
 ... but time constraints exist...
 
-So to ensure that we deliver a polished product on time, I scoped down those ideas, focusing instead on perfecting the weight, slide friction, and responsiveness of our core movement physics so the fundamental navigation felt great to play.
+So to ensure that we deliver a polished product on time, I scoped down those ideas.
+focusing instead on perfecting the weight, slide friction, and responsiveness of our core movement physics so the fundamental navigation felt great to play.
 -> END

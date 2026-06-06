@@ -7,9 +7,13 @@ Want to hear more?
 + [No] -> END
 
 === technical_detail ===
-Testing on low-to-mid-tier Android devices meant dealing with unexpected frame drops. I monitored runtime logs using Android Logcat, Unity Remote, and rendering passes using RenderDoc. 
+Testing on low-to-mid-tier Android devices meant dealing with unexpected frame drops. 
+
+I monitored runtime logs using Android Logcat, Unity Remote, and rendering passes using RenderDoc. 
 
 Through the Unity Profiler and RenderDoc frame analysis, I discovered that our 3D models just had too many vertices and triangles for standard mobile GPUs. 
 
-To solve this, we reduced our 3D polygon counts and shifted to lightweight 2D art (fake 3d) sprites for recurring elements, like our walking characters and the animals inside the coops. This drastically lowered draw calls and stabilized our frame rate.
+To solve this, we reduced our 3D polygon counts and shifted to lightweight 2D art (fake 3d) sprites for recurring elements.
+
+..like our walking characters and the animals inside the coops. This drastically lowered draw calls and stabilized our frame rate.
 -> END

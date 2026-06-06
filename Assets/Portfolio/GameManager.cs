@@ -2,9 +2,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance;
+    public static GameManager Instance { get => instance; private set { instance = value; }  }
+     private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+    }
+
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private FPSMovement playerMovement;
     [SerializeField] private SM_FP_Basic stateMachine;
+
+    public bool DialogueIsPlaying => dialogueManager.dialogueIsPlaying;
 
     private void Update()
     {

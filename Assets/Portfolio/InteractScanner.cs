@@ -28,8 +28,6 @@ public class InteractScanner : MonoBehaviour
 
         if (hits.Length == 0)
         {
-            current?.OffHighlight();
-            current = null;
             return null;
         }
 
@@ -68,11 +66,22 @@ public class InteractScanner : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.DialogueIsPlaying)
+        {
+            interactUI.SetActive(false);
+            return;
+        }
+
         IInteractable interactable = GetBestInteractable();
         if(interactable != null)
         {
             interactable.OnHighlight();
             current = interactable;
+        }
+        else
+        {
+            current?.OffHighlight();
+            current = null;
         }
 
         if(current != null && Input.GetKeyDown(KeyCode.E))

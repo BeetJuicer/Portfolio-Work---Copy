@@ -7,13 +7,17 @@ Want me to go into more technical detail?
 + [No] -> END
 
 === technical_detail ===
-I programmed a `Plot` script that manages a crop's lifecycle using four simple states: Waiting, Empty, Growing, and Ripe.
+I programmed a script that manages a crop's life cycle using four simple states: Waiting, Empty, Growing, and Ripe.
 
-When a player plants something, the system pulls data directly from a data file containing the crop's stats, spawns the visual model in the game, and saves the details to our local SQLite database.
+When a player plants something, the system pulls the crop's stats from a data file, creates its visual model in the game, and saves the details to our local database.
 
-To stop players from cheating by altering their mobile device's clock, the game calculates the completion time using an online network server time. To save processing power, the game only checks the timer twice per second instead of every single frame, calculating how much time is left and factoring in if a player has activated a speed boost.
+To prevent players from cheating by changing their device's clock, the game calculates completion times using an online time server instead of the local device time.
 
-Player inputs change dynamically depending on the current state of the plot. Clicking an empty plot opens up the seed selection menu, clicking a growing plot brings up a button to speed up the timer, and clicking a ripe plot lets the player harvest the crop.
+To save processing power, the game only checks the growth timer twice per second instead of every single frame, while still accounting for any active speed boosts.
 
-When harvesting, the script calculates the final crop yield through a boost manager to check for buffs, updates the player's inventory, awards experience points, and deletes the crop's visual model from the world so the plot resets to Empty.
+Player inputs change dynamically depending on the plot's current state, so clicking an empty plot opens the seed menu, while clicking a growing plot lets you speed up the timer.
+
+Clicking a ripe plot harvests the crop, which calculates the final yield using active boosts, updates the player's inventory, and awards experience points.
+
+Finally, the script deletes the crop's visual model from the world so the plot resets back to Empty.
 -> END

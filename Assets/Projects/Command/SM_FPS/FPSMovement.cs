@@ -51,8 +51,7 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
     private void FixedUpdate()
     {
         print("movement: " + movementEnabled);
-        if (!movementEnabled)
-            return;
+
 
         float currentDeceleration = decelerationAmount * decelerationScale * Time.fixedDeltaTime;
         currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, 0f, currentDeceleration);
@@ -62,6 +61,14 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
         {
             float currentGravity = gravityAmount * gravityScale * Time.fixedDeltaTime;
             currentVelocity.y = Mathf.MoveTowards(currentVelocity.y, -maxFallSpeed, currentGravity);
+        }
+
+        //allow gravity to happen even if disabled movement.
+        if (!movementEnabled)
+        {
+            Vector3 fall = (currentVelocity.y * transform.up) * Time.fixedDeltaTime;
+            characterController.Move(fall);
+            return;
         }
 
         Vector3 move = (currentVelocity.x * transform.right +
@@ -77,8 +84,8 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
     public void Move(Vector3 moveAmount) => characterController.Move(moveAmount);
     public void SetVelocity(Vector3 velocity) => currentVelocity = velocity;
     public void SetVelocityX(float velocityX) => currentVelocity.x = velocityX;
-    public void SetVelocityY(float velocityY) => currentVelocity.y = velocityY; 
-    public void SetVelocityZ(float velocityZ) => currentVelocity.z = velocityZ; 
+    public void SetVelocityY(float velocityY) => currentVelocity.y = velocityY;
+    public void SetVelocityZ(float velocityZ) => currentVelocity.z = velocityZ;
 
     public void ClampVelocityY(float max) => currentVelocity.y = Mathf.Min(currentVelocity.y, max);
     public void StopMovement() => currentVelocity = Vector3.zero;
@@ -100,7 +107,7 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
 
     #region IJumpable
     public bool IsGrounded() => characterController.isGrounded;
-    public void Jump(float force) => currentVelocity.y += force;
+    public void Jump(float force) {if (movementEnabled) currentVelocity.y += force; }
 
     public void SetVerticalLookRange(float min, float max)
     {

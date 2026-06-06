@@ -7,13 +7,15 @@ Want me to go into more technical detail?
 + [No] -> END
 
 === technical_detail ===
-I wrote a `Structure` script that tracks whether a building is currently under construction or completed using a basic list of states. 
+I wrote a script that tracks whether a building is currently under construction or fully completed.
 
-When a building finishes construction, it automatically saves its new state to the local SQLite database, alerts other parts of the game to switch the visual models, and rewards the player with experience points.
+When a building finishes, the script automatically saves its new status, updates its visual appearance in the game, and rewards the player with experience points.
 
-To stop players from cheating by altering their device's system clock, I calculated construction completion times using an estimated online network server time rather than the device's local time.
+To prevent players from cheating by changing their device's clock, I used an online time server to calculate completion times instead of the local device time.
 
-I also set up a context-aware click system. When a player clicks a building that is still under construction, the UI opens up options to speed up the timer, view info, or sell it. If the building is already completed, the script steps aside and lets specialized components—like resource producers or farming plots—handle the player's interactions instead.
+I also built a smart interaction system where clicking an unfinished building opens a menu to speed up construction, view info, or sell it.
 
-Lastly, I added a proximity feature for special 'Buff' structures. When a building finishes, it scans a set radius around itself to look for nearby objects that can accept buffs, automatically boosting neighboring zones in the game.
+If the building is already completed, the script steps aside so its unique features—like resource production—can handle the player's clicks instead.
+
+Finally, I added a proximity feature so that when a special "Buff" structure finishes, it scans the surrounding area to automatically boost the stats of any nearby buildings.
 -> END

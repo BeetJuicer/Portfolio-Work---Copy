@@ -221,6 +221,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba5f276684cefe344b437b8980923cfb, type: 3}
+--- !u!328 &104783667 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 1904681621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &144732938
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +276,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   interactUI: {fileID: 1481841078}
+--- !u!328 &155754120 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 2144340704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &176207566
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +330,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 826935838}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!328 &177247405 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 520563984}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &177254445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1119,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 32900000, guid: f97428e844f7d214e9c0ee2d70f544c4, type: 3}
     - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 25bacb3915ded774a9d1c66df88336db, type: 2}
@@ -1150,8 +1169,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 520563986}
   m_SourcePrefab: {fileID: 100100000, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+--- !u!1 &520563985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 520563984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &520563986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520563985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3df0bb42ddc84e4a918a4ab074cf5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VideoTexturePlayer
+  videoName: preview-possess.mp4
 --- !u!1 &656637528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,13 +1533,16 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1467343306}
-  - {fileID: 1567896024}
   - {fileID: 982495801}
   - {fileID: 176207568}
   - {fileID: 1731675789}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!328 &847276792 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 855987424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &855987424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1781,6 +1824,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 32900000, guid: 30f91588d2a0f60438d8b26889d89cae, type: 3}
     - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 4afe33fa3289e9948af5c9572159bc32, type: 2}
@@ -1827,8 +1874,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 855987426}
   m_SourcePrefab: {fileID: 100100000, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+--- !u!1 &855987425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 855987424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &855987426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855987425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3df0bb42ddc84e4a918a4ab074cf5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VideoTexturePlayer
+  videoName: preview-bullet.mp4
 --- !u!1 &858652184
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,6 +2349,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6884409837730834175, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -2304,8 +2376,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1761269469}
   m_SourcePrefab: {fileID: 100100000, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+--- !u!1 &949387062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 949387061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &954329886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2587,6 +2667,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 32900000, guid: 871a86031e6a9ef48a0b88947fa741d2, type: 3}
     - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: c555f000841b7f0468f1458062ecaefe, type: 2}
@@ -2633,8 +2717,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1426071063}
   m_SourcePrefab: {fileID: 100100000, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+--- !u!1 &954329887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 954329886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &982495798
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,15 +3748,28 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!328 &1426071062 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 954329886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1426071063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954329887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3df0bb42ddc84e4a918a4ab074cf5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VideoTexturePlayer
+  videoName: preview-mesh.mp4
 --- !u!4 &1450096221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3761681640230067246, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
   m_PrefabInstance: {fileID: 8706586574847077915}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1467343306 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5371643766033597144, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-  m_PrefabInstance: {fileID: 3513137292855077544}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1481841077
 PrefabInstance:
@@ -4103,21 +4208,10 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8072471965107720148, guid: c51ba152ad94fc747ad6dc62e5a7b70b, type: 3}
   m_PrefabInstance: {fileID: 1897412108}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1567896023 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7323541819640825127, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-  m_PrefabInstance: {fileID: 1163153016547845674}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c06d12b47011a340a19fc0d867f2512, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
---- !u!4 &1567896024 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6929489806972614426, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-  m_PrefabInstance: {fileID: 1163153016547845674}
+--- !u!328 &1604796842 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 8706586574847077915}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1670568272
 GameObject:
@@ -4291,7 +4385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f29ca9ddf4e7a4d83c8da4e265c0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  dialogueManager: {fileID: 1567896023}
+  dialogueManager: {fileID: 0}
   playerMovement: {fileID: 2028803605}
   stateMachine: {fileID: 2028803601}
 --- !u!114 &1731675791
@@ -4337,6 +4431,76 @@ Transform:
   m_Children:
   - {fileID: 1484063872}
   - {fileID: 858652187}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!328 &1761269468 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 949387061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1761269469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949387062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3df0bb42ddc84e4a918a4ab074cf5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VideoTexturePlayer
+  videoName: preview-time.mp4
+--- !u!1 &1782073155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1782073157}
+  - component: {fileID: 1782073156}
+  m_Layer: 0
+  m_Name: VideoManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1782073156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782073155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c531f7c1effb4c4d85617fcf1bfdeab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VideoManager
+  players:
+  - {fileID: 1604796842}
+  - {fileID: 104783667}
+  - {fileID: 847276792}
+  - {fileID: 1426071062}
+  - {fileID: 177247405}
+  - {fileID: 155754120}
+  - {fileID: 1761269468}
+--- !u!4 &1782073157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782073155}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 122.5936, y: 4.53, z: -3.44191}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1829487320
@@ -5412,6 +5576,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 32900000, guid: 29e2f9502fcf7094e8667731a8fb16b0, type: 3}
     - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: ff606974115e02740a62535cff4fcc0c, type: 2}
@@ -5458,8 +5626,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1904681623}
   m_SourcePrefab: {fileID: 100100000, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+--- !u!1 &1904681622 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 1904681621}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1904681623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904681622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3df0bb42ddc84e4a918a4ab074cf5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VideoTexturePlayer
+  videoName: preview-bird.mp4
 --- !u!1 &1920152534
 GameObject:
   m_ObjectHideFlags: 0
@@ -6215,6 +6404,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 32900000, guid: 1d8cf0adefa06cd43868cfcd511e2754, type: 3}
     - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 9f33eca9b06cdb64ea5c633bc59ec5de, type: 2}
@@ -6261,8 +6454,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2144340706}
   m_SourcePrefab: {fileID: 100100000, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+--- !u!1 &2144340705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 2144340704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2144340706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144340705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3df0bb42ddc84e4a918a4ab074cf5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VideoTexturePlayer
+  videoName: preview-terrain.mp4
 --- !u!1 &2146075739
 GameObject:
   m_ObjectHideFlags: 0
@@ -6390,132 +6604,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!1001 &1163153016547845674
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 826935838}
-    m_Modifications:
-    - target: {fileID: 4509525367214628317, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-      propertyPath: m_Name
-      value: DialogueManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929489806972614426, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -20.635513
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929489806972614426, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.3845026
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929489806972614426, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -12.607124
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929489806972614426, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929489806972614426, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929489806972614426, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929489806972614426, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929489806972614426, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929489806972614426, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929489806972614426, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 66ed2386bc650c440be7e79a3171ccb0, type: 3}
---- !u!1001 &3513137292855077544
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 826935838}
-    m_Modifications:
-    - target: {fileID: 2208766382213782300, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_Name
-      value: SceneChanger
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208766382213782300, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4552437265418569291, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371643766033597144, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 16.981148
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371643766033597144, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.2297227
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371643766033597144, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.529125
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371643766033597144, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371643766033597144, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371643766033597144, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371643766033597144, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371643766033597144, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371643766033597144, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371643766033597144, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7578986960064384827, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 830d295ef87f3d241b7067e9624cc82b, type: 3}
 --- !u!1001 &8706586574847077915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6793,6 +6881,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 32900000, guid: 3856a8894870c72469fcfa58159ccb0e, type: 3}
     - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847432436426945693, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 6b862f06d37b7a140ab217320eb114c3, type: 2}
@@ -6815,8 +6907,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8706586574847077917}
   m_SourcePrefab: {fileID: 100100000, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+--- !u!1 &8706586574847077916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739266916449580757, guid: 7518b6d98d308234898a4bfa985dce6b, type: 3}
+  m_PrefabInstance: {fileID: 8706586574847077915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8706586574847077917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8706586574847077916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3df0bb42ddc84e4a918a4ab074cf5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VideoTexturePlayer
+  videoName: preview-boids.mp4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6826,3 +6939,4 @@ SceneRoots:
   - {fileID: 1897412108}
   - {fileID: 50090008}
   - {fileID: 1481841077}
+  - {fileID: 1782073157}

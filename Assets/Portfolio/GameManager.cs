@@ -14,11 +14,16 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    [SerializeField] private DialogueManager dialogueManager;
+    private DialogueManager dialogueManager;
     [SerializeField] private FPSMovement playerMovement;
     [SerializeField] private SM_FP_Basic stateMachine;
 
     public bool DialogueIsPlaying => dialogueManager.dialogueIsPlaying;
+
+    private void Start()
+    {
+        dialogueManager = FindAnyObjectByType<DialogueManager>();
+    }
 
     private void Update()
     {

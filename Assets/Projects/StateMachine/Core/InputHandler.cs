@@ -78,6 +78,9 @@ namespace StateMachineCore
             JumpHeld = jumpAction.IsPressed();
             JumpReleased = jumpAction.WasReleasedThisFrame();
 
+            if(JumpReleased)
+                Debug.Log("Jump released at time: " + Time.time);
+
             DiveReleased = diveAction.WasReleasedThisFrame();
 
             CrouchHeld = crouchAction.IsPressed();

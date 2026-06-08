@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics.Tracing;
 using Ink;
 using Ink.Runtime;
@@ -47,12 +48,17 @@ public class DialogueManager : MonoBehaviour
     private DialogueVariables dialogueVariables;
     private event Action OnDialogueFinished;
 
+    private bool isTyping = false;
+
     private void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
-            Debug.LogWarning("Found more than one Dialogue Manager in the scene");
+            Destroy(gameObject);
+            return;
         }
+
+        DontDestroyOnLoad(gameObject);
         instance = this;
 
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
@@ -81,17 +87,32 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (!dialogueIsPlaying)
-        {
-            return;
-        }
+        if (!dialogueIsPlaying) return;
 
-        if (canContinueToNextLine
-            && currentStory.currentChoices.Count == 0
-            && Input.GetKeyDown(continueKey))
+        if (Input.GetKeyDown(continueKey))
         {
-            ContinueStory();
+            if (isTyping)
+            {
+                // skip the typewriter, don't advance yet
+                SkipTypewriter();
+            }
+            else if (canContinueToNextLine && currentStory.currentChoices.Count == 0)
+            {
+                ContinueStory();
+            }
         }
+    }
+
+    private void SkipTypewriter()
+    {
+        if (displayLineCoroutine != null)
+            StopCoroutine(displayLineCoroutine);
+
+        dialogueText.maxVisibleCharacters = dialogueText.text.Length;
+        continueIcon.SetActive(true);
+        DisplayChoices();
+        canContinueToNextLine = true;
+        isTyping = false;
     }
 
     public void EnterDialogueMode(TextAsset inkJSON)
@@ -103,7 +124,7 @@ public class DialogueManager : MonoBehaviour
         dialogueVariables.StartListening(currentStory);
 
         // reset portrait, layout, and speaker
-        displayNameText.text = "???";
+        displayNameText.text = "Carl";
         //portraitAnimator.Play("default");
         //layoutAnimator.Play("right");
 
@@ -162,49 +183,32 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator DisplayLine(string line)
     {
-        // set the text to the full line, but set the visible characters to 0
         dialogueText.text = line;
         dialogueText.maxVisibleCharacters = 0;
-        // hide items while text is typing
         continueIcon.SetActive(false);
         HideChoices();
-
         canContinueToNextLine = false;
+        isTyping = true;
 
         bool isAddingRichTextTag = false;
 
-        // display each letter one at a time
         foreach (char letter in line.ToCharArray())
         {
-            // if the submit button is pressed, finish up displaying the line right away
-            if (Input.GetKeyDown(continueKey))
-            {
-                dialogueText.maxVisibleCharacters = line.Length;
-                break;
-            }
-
-            // check for rich text tag, if found, add it without waiting
             if (letter == '<' || isAddingRichTextTag)
             {
                 isAddingRichTextTag = true;
-                if (letter == '>')
-                {
-                    isAddingRichTextTag = false;
-                }
+                if (letter == '>') isAddingRichTextTag = false;
             }
-            // if not rich text, add the next letter and wait a small time
             else
             {
-                //AudioManager.instance.Play("Typewriter");
                 dialogueText.maxVisibleCharacters++;
                 yield return new WaitForSeconds(typingSpeed);
             }
         }
 
-        // actions to take after the entire line has finished displaying
+        isTyping = false;
         continueIcon.SetActive(true);
         DisplayChoices();
-
         canContinueToNextLine = true;
     }
 

@@ -36,6 +36,9 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
     private float minLookAngle;
     private float maxLookAngle;
 
+    private bool jumpQueued = false;
+    private float jumpForce = 0f;
+
     [Header("Platform Tracking")]
     [SerializeField] private LayerMask platformLayer;
     private MovingPlatform3D activePlatform;
@@ -58,6 +61,12 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
         float currentDeceleration = decelerationAmount * decelerationScale * Time.fixedDeltaTime;
         currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, 0f, currentDeceleration);
         currentVelocity.z = Mathf.MoveTowards(currentVelocity.z, 0f, currentDeceleration);
+
+        if (jumpQueued)
+        {
+            currentVelocity.y = jumpForce; // SET, don't add — wipes any downward gravity accumulation
+            jumpQueued = false;
+        }
 
         if (!IsGrounded())
         {
@@ -151,7 +160,14 @@ public class FPSMovement : MonoBehaviour, IMovable3D, IJumpable
 
     #region IJumpable
     public bool IsGrounded() => characterController.isGrounded;
-    public void Jump(float force) { if (movementEnabled && IsGrounded()) currentVelocity.y += force; }
+    public void Jump(float force)
+    {
+        if (movementEnabled && IsGrounded())
+        {
+            jumpQueued = true;
+            jumpForce = force;
+        }
+    }
 
     public void SetVerticalLookRange(float min, float max)
     {

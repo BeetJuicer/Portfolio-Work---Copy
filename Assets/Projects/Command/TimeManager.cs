@@ -41,16 +41,10 @@ namespace CommandPattern
             if (!isReversing)
             {
                 HandleRecording();
-
-                if (Input.GetKeyDown(KeyCode.R))
-                    StartReversing();
             }
             else
             {
                 HandleReversing();
-
-                if (Input.GetKeyUp(KeyCode.R))
-                    StopReversing();
             }
         }
 
@@ -77,12 +71,6 @@ namespace CommandPattern
 
             if (snapShots.ContainsKey(currentTime))
             {
-                foreach (var command in snapShots[currentTime])
-                {
-                    if (command.currentT != 0)
-                        command.Undo();
-                }
-                // step back one snapshot
                 int idx = snapShots.IndexOfKey(currentTime) - 1;
                 currentTime = idx >= 0 ? snapShots.Keys[idx] : 0f;
             }

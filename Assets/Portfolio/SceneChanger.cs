@@ -38,6 +38,11 @@ public class SceneChanger : MonoBehaviour
         FadeIn();
     }
 
+    public void Close()
+    {
+        fadeImage.color = new Color(0, 0, 0, 1);
+    }
+
     public void ChangeScene(string sceneName)
     {
         fadeImage.raycastTarget = true;
@@ -48,7 +53,7 @@ public class SceneChanger : MonoBehaviour
         });
     }
 
-    private void FadeIn()
+    public void FadeIn()
     {
         fadeImage.DOFade(0f, fadeDuration).OnComplete(() =>
         {

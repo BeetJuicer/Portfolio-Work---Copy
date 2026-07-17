@@ -6,7 +6,7 @@ Want to hear how we ran our testing?
 + [No] -> END
 
 === technical_detail ===
-We set up and monitored our internal closed testing tracks via the Play Console for remote testers, while simultaneously organizing physical, in-person playtesting sessions at different venues. 
+We set up and monitored our internal closed testing tracks via the Play Console for remote testers, while simultaneously organizing in-person playtesting sessions at different venues. 
 
 Our analytics pipeline helped out a lot here, because we could see how much time spent in the game was being used to learn.
 

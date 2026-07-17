@@ -2,9 +2,9 @@
   <Project Path="FronkonGames.Artistic.OneBit.Editor.csproj" />
   <Project Path="FronkonGames.Artistic.TiltShift.Editor.csproj" />
   <Project Path="AStar.csproj" />
+  <Project Path="LineworkLite.csproj" />
   <Project Path="FronkonGames.Artistic.OilPaint.csproj" />
   <Project Path="FronkonGames.Artistic.Neon.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Ink-Libraries.csproj" />
   <Project Path="Command.csproj" />
   <Project Path="StateMachine.BOF.csproj" />
@@ -12,12 +12,13 @@
   <Project Path="BulletHell.csproj" />
   <Project Path="FronkonGames.Artistic.OilPaint.Editor.csproj" />
   <Project Path="InkEditor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="FronkonGames.Artistic.OneBit.csproj" />
-  <Project Path="MathsFreya.csproj" />
   <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="Splines.csproj" />
   <Project Path="FronkonGames.Artistic.Neon.Editor.csproj" />
   <Project Path="StateMachine.Possess.csproj" />
+  <Project Path="LineworkLite.Editor.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="FronkonGames.Artistic.TiltShift.csproj" />
   <Project Path="FronkonGames.Artistic.Comic.Editor.csproj" />
